@@ -1,0 +1,12 @@
+<div class="fixed w-full z-50 top-4 text-white text-center p-3">
+  <div
+    class="rounded p-4 mx-auto shadow-xl max-w-lg"
+    [ngClass]="{
+    'bg-green-600': type === 'success',
+    'bg-red-600': type === 'danger',
+    'bg-blue-600': type === 'info',
+  }"
+  >
+    <ng-content></ng-content>
+  </div>
+</div>

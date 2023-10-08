@@ -1,0 +1,51 @@
+<section class="w-full h-[70vh] max-h-[500px] relative flex justify-center">
+  <video
+    class="absolute w-full h-full object-cover brightness-50"
+    src="assets/videos/hero-bg.mp4"
+    autoplay
+    muted
+    loop
+  ></video>
+  <div class="absolute h-full flex flex-col justify-center text-white p-5">
+    <h1 class="font-bold md:font-extrabold text-4xl md:text-6xl shadow-md">
+      Unlocking <span class="text-sky-500">Code</span>,<br />
+      One <span class="text-sky-500">Clip</span> at a Time.
+    </h1>
+    <p class="max-w-md py-3">
+      Welcome to DevClips, your gateway to a world of coding knowledge through
+      bite-sized videos. Learn, share, and code with ease.
+    </p>
+  </div>
+</section>
+
+<section>
+  <div class="flex items-center m-8">
+    <div class="h-px flex-grow bg-slate-400"></div>
+    <p class="text-2xl mx-5">Latest videos</p>
+    <div class="h-px flex-grow bg-slate-400"></div>
+  </div>
+  <div
+    *ngFor="let video of [1, 2, 3, 4, 5]"
+    class="container flex justify-center items-center space-x-5"
+  >
+    <div
+      class="w-full flex flex-col md:flex-row space-x-4 space-y-4 rounded-lg overflow-hidden"
+    >
+      <video
+        class="object-cover w-full lg:w-1/3 h-52 rounded-lg bg-gradient-to-br from-slate-900 to-sky-500"
+      >
+        <source src="assets/videos/hero-bg.mp4" />
+        <!-- <img
+          src="/images/product/product-parent-hero.jpg"
+          title="Your browser does not support"
+        /> -->
+      </video>
+      <p class="text-slate-500">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim illo,
+        voluptate rem, quis id delectus, neque repellat praesentium distinctio
+        aliquam tempora quos optio dolores animi quae mollitia quam blanditiis
+        placeat?
+      </p>
+    </div>
+  </div>
+</section>

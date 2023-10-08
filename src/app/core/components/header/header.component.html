@@ -1,0 +1,63 @@
+<header class="flex justify-between items-center container">
+  <div class="flex items-center">
+    <div class="text-sky-500 font-extrabold text-3xl pe-5">
+      <a routerLink="/">DevClips</a>
+    </div>
+
+    <nav>
+      <ul class="flex items-end space-x-5">
+        <li class="cursor-pointer hover:text-sky-500">
+          <a routerLink="about" routerLinkActive="text-sky-500 font-bold"
+            >About us</a
+          >
+        </li>
+        <ng-container *ngIf="firebase.isAuthenticated$ | async">
+          <li class="cursor-pointer hover:text-sky-500">
+            <a routerLink="manage" routerLinkActive="text-sky-500 font-bold"
+              >Manage</a
+            >
+          </li>
+          <li class="cursor-pointer hover:text-sky-500">Upload</li>
+          <li class="bg-sky-500 rounded text-slate-900 text-sm py-1 px-3">
+            Hesham mohammed
+          </li>
+        </ng-container>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="flex justify-between items-center space-x-5">
+    <button
+      *ngIf="!(firebase.isAuthenticated$ | async)"
+      class="btn-icon"
+      (click)="modalService.open('auth')"
+    >
+      <app-icon icon="user"></app-icon>
+    </button>
+    <button
+      *ngIf="firebase.isAuthenticated$ | async"
+      class="btn-icon"
+      (click)="logout_user.emit()"
+    >
+      <app-icon icon="logout"></app-icon>
+    </button>
+    <button class="btn-icon" (click)="themeService.toggle()">
+      <app-icon
+        *ngIf="themeService.currentTheme !== 'dark'"
+        icon="moon"
+      ></app-icon>
+      <app-icon
+        *ngIf="themeService.currentTheme === 'dark'"
+        icon="sun"
+      ></app-icon>
+    </button>
+
+    <button class="btn-icon">
+      <app-icon icon="lang"></app-icon>
+    </button>
+
+    <button class="btn-icon sm:hidden">
+      <app-icon icon="menu"></app-icon>
+    </button>
+  </div>
+</header>

@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="w-full rounded flex justify-end items-center px-3 my-5">
+    <a class="text-sky-500 mx-3 cursor-pointer">Recent uploads</a>
+    <button class="btn-primary rounded text-white">
+      <app-icon icon="upload"></app-icon>
+      <span>Upload</span>
+    </button>
+  </div>
+
+  <section>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+      <div
+        *ngFor="let video of [1, 2, 3, 4, 5]"
+        class="overflow-hidden rounded shadow-lg dark:shadow-slate-700"
+      >
+        <video class="w-full" src="assets/videos/hero-bg.mp4"></video>
+
+        <div class="flex justify-around items-center my-5">
+          <app-icon icon="gear"></app-icon>
+          <app-icon icon="trash"></app-icon>
+          <app-icon icon="gear"></app-icon>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

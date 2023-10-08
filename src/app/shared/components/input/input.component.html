@@ -1,0 +1,77 @@
+<div class="flex flex-col pb-3">
+  <label class="text-sky-500" [for]="id"
+    >{{ label }} <span *ngIf="required" class="text-red-400">*</span></label
+  >
+  <input
+    *ngIf="!format; else withFormat"
+    class="form-control"
+    [type]="type"
+    [id]="id"
+    [formControl]="control"
+  />
+
+  <ng-container *ngIf="control.touched && control.dirty">
+    <p
+      *ngIf="control.errors?.['required']"
+      class="text-red-400 font-light text-sm ps-2"
+    >
+      {{ label }} field is required
+    </p>
+    <p
+      *ngIf="control.errors?.['minlength']"
+      class="text-red-400 font-light text-sm ps-2"
+    >
+      Name must be greater than
+      <span>{{control.errors?.['minlength'].requiredLength}}</span>
+      chars
+    </p>
+    <p
+      *ngIf="control.errors?.['email']"
+      class="text-red-400 font-light text-sm ps-2"
+    >
+      Invalid email
+    </p>
+    <p
+      *ngIf="control.errors?.['min']"
+      class="text-red-400 font-light text-sm ps-2"
+    >
+      value must be greater than {{control.errors?.['min'].min }}
+    </p>
+    <p
+      *ngIf="control.errors?.['max']"
+      class="text-red-400 font-light text-sm ps-2"
+    >
+      value must be less than {{control.errors?.['max'].max }}
+    </p>
+    <p
+      *ngIf="control.errors?.['pattern']"
+      class="text-red-400 font-light text-sm ps-2"
+    >
+      value must be more than 8 chars, 1 Uppercase, 1 Lowercase, 1 number
+    </p>
+    <p
+      *ngIf="control.errors?.['noMatch']"
+      class="text-red-400 font-light text-sm ps-2"
+    >
+      password don't match confirm password
+    </p>
+    <p
+      *ngIf="control.errors?.['alreadyExist']"
+      class="text-red-400 font-light text-sm ps-2"
+    >
+      Email already exist
+    </p>
+  </ng-container>
+</div>
+
+<ng-template #withFormat>
+  <input
+    class="form-control"
+    [type]="type"
+    [id]="id"
+    [formControl]="control"
+    [mask]="format"
+    [prefix]="prefix"
+    [dropSpecialCharacters]="dropSpecialCharacters"
+  />
+</ng-template>

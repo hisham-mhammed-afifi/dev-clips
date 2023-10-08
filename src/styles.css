@@ -1,1 +1,30 @@
-/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  input,
+  textarea {
+    @apply focus:outline-none bg-transparent resize-none;
+  }
+  .container {
+    @apply p-3  md:px-5 md:py-5 max-w-5xl mx-auto;
+  }
+  button {
+    @apply flex justify-center items-center space-x-2 bg-transparent text-center font-medium focus:outline-none border-none;
+  }
+  .btn-primary {
+    @apply shadow-md py-1 px-4 text-slate-900 bg-sky-400 hover:bg-sky-300;
+  }
+  .btn-icon {
+    @apply text-slate-900 text-sky-500 transition-all ease-in-out;
+  }
+
+  .btn-icon:hover svg {
+    @apply scale-110;
+  }
+
+  .form-control {
+    @apply border border-sky-500  rounded focus:border-sky-300 px-3 py-1 my-1;
+  }
+}
