@@ -10,6 +10,7 @@ import { ThemeService } from '../../services/theme.service';
 })
 export class HeaderComponent implements OnInit {
   isDarkMode!: boolean;
+  menuOpen = false;
 
   @Output() logout_user = new EventEmitter();
 

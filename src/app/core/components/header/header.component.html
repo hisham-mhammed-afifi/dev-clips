@@ -1,24 +1,42 @@
 <header class="flex justify-between items-center container">
   <div class="flex items-center">
     <div class="text-sky-500 font-extrabold text-3xl pe-5">
-      <a routerLink="/">DevClips</a>
+      <a routerLink="/" (click)="menuOpen = false">DevClips</a>
     </div>
 
-    <nav>
-      <ul class="flex items-end space-x-5">
-        <li class="cursor-pointer hover:text-sky-500">
+    <nav
+      class="max-md:fixed max-md:right-0 max-md:left-0 max-md:top-14 max-md:shadow-lg bg-white dark:bg-slate-900 w-full max-md:p-5 z-50"
+      [ngClass]="{
+        'max-md:hidden': !menuOpen,
+      }"
+    >
+      <ul class="md:flex md:items-center md:space-x-5">
+        <li
+          class="cursor-pointer hover:text-sky-500 py-5"
+          (click)="menuOpen = false"
+        >
           <a routerLink="about" routerLinkActive="text-sky-500 font-bold"
             >About us</a
           >
         </li>
         <ng-container *ngIf="firebase.isAuthenticated$ | async">
-          <li class="cursor-pointer hover:text-sky-500">
+          <li
+            class="cursor-pointer hover:text-sky-500 py-5"
+            (click)="menuOpen = false"
+          >
             <a routerLink="manage" routerLinkActive="text-sky-500 font-bold"
               >Manage</a
             >
           </li>
-          <li class="cursor-pointer hover:text-sky-500">Upload</li>
-          <li class="bg-sky-500 rounded text-slate-900 text-sm py-1 px-3">
+          <li
+            class="cursor-pointer hover:text-sky-500 py-5"
+            (click)="menuOpen = false"
+          >
+            Upload
+          </li>
+          <li
+            class="bg-sky-500 rounded text-slate-900 max-w-fit text-sm py-1 px-3"
+          >
             Hesham mohammed
           </li>
         </ng-container>
@@ -56,7 +74,7 @@
       <app-icon icon="lang"></app-icon>
     </button>
 
-    <button class="btn-icon sm:hidden">
+    <button class="btn-icon md:hidden" (click)="menuOpen = !menuOpen">
       <app-icon icon="menu"></app-icon>
     </button>
   </div>
