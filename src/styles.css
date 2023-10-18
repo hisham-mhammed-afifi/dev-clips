@@ -11,7 +11,10 @@
     @apply p-3  md:px-5 md:py-5 max-w-5xl mx-auto;
   }
   button {
-    @apply flex justify-center items-center space-x-2 bg-transparent text-center font-medium focus:outline-none border-none;
+    @apply flex justify-center items-center space-x-2 bg-transparent text-center font-medium border-none;
+  }
+  button:focus {
+    @apply outline-none border-none bg-transparent;
   }
   .btn-primary {
     @apply shadow-md py-1 px-4 text-slate-900 bg-sky-400 hover:bg-sky-300;
