@@ -1,10 +1,4 @@
-import {
-  Component,
-  EventEmitter,
-  OnInit,
-  Output,
-  TemplateRef,
-} from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ModalService } from '../../services/modal.service';
 import { FirebaseService } from '../../services/firebase.service';
 import { ThemeService } from '../../services/theme.service';
@@ -30,8 +24,8 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  openDropdwon(temp: TemplateRef<HTMLElement>) {
-    // TODO: implement langs list
-    document.body.appendChild(temp.elementRef.nativeElement);
+  changeLang(e: MouseEvent, lang: string) {
+    e.stopImmediatePropagation();
+    // TODO implement languages change
   }
 }

@@ -70,7 +70,7 @@
       ></app-icon>
     </button>
 
-    <button class="btn-icon" (click)="openDropdwon(langMenu)">
+    <button class="btn-icon" appDropdown [template]="langMenu">
       <app-icon icon="lang"></app-icon>
     </button>
 
@@ -82,15 +82,21 @@
 
 <ng-template #langMenu>
   <div
-    class="absolute p-3 rounded shadow flex flex-col space-y-4 max-w-xs top-0 right-0 bg-slate-50"
+    class="absolute border border-slate-200 dark:border-slate-800 rounded-lg overflow-hidden shadow-xl flex flex-col items-start max-w-xs bg-adapted"
   >
-    <div class="flex items-center">
-      <app-icon icon="lang"></app-icon>
-      <span class="px-2">arabic</span>
-    </div>
-    <div class="flex items-center">
-      <app-icon icon="lang"></app-icon>
-      <span class="px-2">english</span>
-    </div>
+    <button
+      class="flex items-center w-full hover:bg-slate-200 dark:hover:bg-slate-800 py-2 px-4"
+      (click)="changeLang($event, 'ar')"
+    >
+      <img class="w-4 bg-cover" src="assets/images/arabic.png" alt="arabic" />
+      <span class="px-2">Arabic</span>
+    </button>
+    <button
+      class="flex items-center w-full hover:bg-slate-200 dark:hover:bg-slate-800 py-2 px-4"
+      (click)="changeLang($event, 'en')"
+    >
+      <img class="w-4 bg-cover" src="assets/images/english.png" alt="english" />
+      <span class="px-2">English</span>
+    </button>
   </div>
 </ng-template>
