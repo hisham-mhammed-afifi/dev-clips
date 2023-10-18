@@ -23,7 +23,7 @@ export class AppComponent implements OnInit {
 
   isLoginForm = true;
   registring = false;
-  loging = false;
+  logging = false;
 
   credentials = {
     email: '',
@@ -94,6 +94,7 @@ export class AppComponent implements OnInit {
 
   login(e: Event) {
     e.preventDefault();
+    this.logging = true;
     this.firebase.login(this.credentials).subscribe({
       next: () => {
         this.alert.show = true;
@@ -118,7 +119,7 @@ export class AppComponent implements OnInit {
   hideAlert() {
     setTimeout(() => {
       this.registring = false;
-      this.loging = false;
+      this.logging = false;
       this.alert.show = false;
     }, 2000);
   }

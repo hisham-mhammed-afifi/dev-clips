@@ -68,7 +68,13 @@
       type="submit"
       [disabled]="registerForm.invalid || registring"
     >
-      register
+      <app-icon
+        *ngIf="registring"
+        class="animate-spin"
+        icon="spinner"
+      ></app-icon>
+      <span *ngIf="!registring">register</span>
+      <span *ngIf="registring">wait...</span>
     </button>
     <p class="text-center mt-2">
       Already have account
@@ -132,9 +138,11 @@
     <button
       class="btn-primary rounded w-full disabled:opacity-50 my-4"
       type="submit"
-      [disabled]="loginForm.invalid"
+      [disabled]="loginForm.invalid || logging"
     >
-      login
+      <app-icon *ngIf="logging" class="animate-spin" icon="spinner"></app-icon>
+      <span *ngIf="!logging">login</span>
+      <span *ngIf="logging">wait...</span>
     </button>
     <p class="text-center mt-2">
       Or

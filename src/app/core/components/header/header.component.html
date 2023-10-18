@@ -70,7 +70,7 @@
       ></app-icon>
     </button>
 
-    <button class="btn-icon">
+    <button class="btn-icon" (click)="openDropdwon(langMenu)">
       <app-icon icon="lang"></app-icon>
     </button>
 
@@ -79,3 +79,18 @@
     </button>
   </div>
 </header>
+
+<ng-template #langMenu>
+  <div
+    class="absolute p-3 rounded shadow flex flex-col space-y-4 max-w-xs top-0 right-0 bg-slate-50"
+  >
+    <div class="flex items-center">
+      <app-icon icon="lang"></app-icon>
+      <span class="px-2">arabic</span>
+    </div>
+    <div class="flex items-center">
+      <app-icon icon="lang"></app-icon>
+      <span class="px-2">english</span>
+    </div>
+  </div>
+</ng-template>

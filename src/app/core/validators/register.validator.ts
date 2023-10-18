@@ -6,6 +6,15 @@ import {
   ValidationErrors,
   ValidatorFn,
 } from '@angular/forms';
+import { Observable, from, of } from 'rxjs';
+import {
+  catchError,
+  debounceTime,
+  distinctUntilChanged,
+  map,
+  switchMap,
+  tap,
+} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -15,11 +24,21 @@ export class EmailAlreadyExist implements AsyncValidator {
 
   validate = (
     control: AbstractControl<any, any>
-  ): Promise<ValidationErrors | null> => {
-    return this.firebase
-      .fetchSignInMethodsForEmail(control.value)
-      .then((res) => (!!res.length ? { alreadyExist: true } : null));
+  ): Observable<ValidationErrors | null> => {
+    return control.valueChanges.pipe(
+      debounceTime(500),
+      distinctUntilChanged(),
+      switchMap((email) => this.checkEmailExist(email)), // hish.abdelshafouk@gmail.com
+      map((exist) => (exist ? { alreadyExist: true } : null)),
+      tap((err) => control.setErrors(err))
+    );
   };
+
+  checkEmailExist(email: string): Observable<boolean> {
+    return from(this.firebase.fetchSignInMethodsForEmail(email)).pipe(
+      map((res) => !!res.length)
+    );
+  }
 }
 
 export class RegisterValidators {
